@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<style>
+        body{
+            background-image: url("media/newform.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+             
+        }
+        h1{
+        	text-align: center;
+        	color: yellow;
+        }
+        input{
+        	text-align: center;
+        }
+        button{
+        	background-color:#00FF00;
+        	color: black;
+        }
+
+        table{
+        	margin: auto;
+        	text-align: right;
+        }
+        label{color: red;}
+        
+    </style>
+    <meta charset="UTF-8">
+    <title>New Form</title>
+</head>
+<body>
+    <h1>Google Forms</h1>
+    <table>
+    	<tr>
+    		<td>
+    		 <form method="POST" enctype="multipart/form-data">
+             {% csrf_token %}
+	        {{ form.as_p }}
+	        <button type="submit">Crear Formulario</button>
+    		</form>
+    		</td>
+    	</tr>
+    </table>
+   
+</body>
+</html>

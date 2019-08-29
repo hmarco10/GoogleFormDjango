@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body{
+            background-image: url("../media/newform.jpg");
+            }
+        h1,h3{color: yellow; text-align: center;}
+        form{text-align: center;}
+        
+    </style>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+    <h1>Login</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="action" value="login">
+
+        <input type="text" name="username" placeholder="Usuario">
+        <br><br>
+        <input type="password" name="password" placeholder="password" ><br><br>
+
+        <button type="submti">Ingresar</button>
+    </form>
+    <h3>¿No estas Registrado?</h3>
+        <form action="" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="action" value="signup">
+        <p>
+        <input type="text" name="username"placeholder="Usuario">
+        <input type="password" name="password"placeholder="password">
+        </p>
+        <p>
+         <input type="text" name="first_name"placeholder="Nombre">
+        <input type="text" name="last_name"placeholder="Apellido">
+        </p>
+
+        <button type="submti">Registrarse</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GoogleForms</title>
+    <style>
+        body{
+            background-image: url("media/newform.jpg");
+            color:white; 
+        }
+        h1{text-align: center;
+           color:#00FF00}
+        h3{text-align: right;}
+        h2{text-align: center;}
+        a{color: yellowgreen;}
+        p{color:#00FF00;}
+        table{margin: auto;}
+                ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: yellowgreen;
+        }
+
+        li {
+        float: right;
+        }
+
+        li a {
+        display: flex;
+        color: white;
+        text-align: center;
+        padding: 8px 14px;
+        text-decoration: none;
+        }
+
+        li a:hover {
+        background-color: #111;
+        }
+    </style>
+    
+</head>
+<body>
+    <ul>
+        <li><a href="#about"> 
+            {% if user.is_authenticated %}{{ user.username }} </a>
+        </li>
+        <li>
+            <a href="{% url "products:logout" %}">Logout</a>
+                {% else %}
+                    <a href="{% url "products:authentication" %}">login</a>
+                {% endif %}
+        </li>
+    </ul>
+         
+        
+    <h1>Google Forms</h1>
+    <h2><a  href="{% url "products:new" %}">Crear Nuevo Formulario</a></h2>
+    <table >
+        <thead >
+            <td>ID</td>
+            <td>GoogleForm</td>
+            <td>Descripcion</td>
+            <td></td>
+        </thead>
+        <tbody>
+        {% for pr in object_list %}
+            <tr>
+                <td>{{ pr.id }}</td>
+                <td><a href="{% url "products:detail" pr.id %}">
+                        {{ pr.titulo }}</a></td>
+                <td>{{ pr.descripcion }}</td>
+                <td>
+                    <button><a href="{% url "products:forms_update" pr.id %}">Editar</a></button> 
+                    <button><a href="{% url "products:form_delete" pr.id %}">Eliminar</a> </button>
+                </td>          
+            </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+
+</body>
+</html>
